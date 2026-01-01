@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviador Bot App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            text-align: center; 
+            background-color: var(--tg-theme-bg-color, #ffffff); 
+            color: var(--tg-theme-text-color, #000000);
+            padding: 20px;
+        }
+        .btn {
+            padding: 15px 25px;
+            background-color: var(--tg-theme-button-color, #248bed);
+            color: var(--tg-theme-button-text-color, #ffffff);
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido al Panel de Señales</h1>
+    <p>Presiona el botón para recibir la última actualización.</p>
+    <button class="btn" onclick="sendSignal()">Generar Señal</button>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        function sendSignal() {
+            tg.showConfirm("¿Quieres generar una nueva señal ahora?", (ok) => {
+                if (ok) tg.showAlert("Generando señal... ¡Espera un momento!");
+            });
+        }
+    </script>
+</body>
+</html>
